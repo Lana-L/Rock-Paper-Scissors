@@ -1,4 +1,5 @@
 let playerScore = 0;
+let computerScore = 0;
 game();
 game();
 game();
@@ -6,6 +7,17 @@ game();
 game();
 
 console.log(`Player scored ${playerScore} out of 5`);
+console.log(`Computer scored ${computerScore} out of 5`);
+if (playerScore > computerScore)
+{
+    console.log("Player Wins!");
+}
+else if (computerScore > playerScore)
+{
+    console.log("Computer Wins!");
+}
+else
+    console.log("It's a tie :O");
 
 function game()
 {    
@@ -52,6 +64,7 @@ function playRound(playerSelection, computerSelection)
         if (computerSelection === "paper")
         {
             result = "You lose! Paper beats Rock";
+            computerScore++;
         } else
         if (computerSelection === "scissors")
         {
@@ -69,6 +82,7 @@ function playRound(playerSelection, computerSelection)
         if (computerSelection === "scissors")
         {
             result = "You lose! Scissors beats Paper";
+            computerScore++;
         } else
         if (computerSelection === "rock")
         {
@@ -86,6 +100,7 @@ function playRound(playerSelection, computerSelection)
         if (computerSelection === "rock")
         {
             result = "You lose! Rock beats Scissors";
+            computerScore++;
         } else
         if (computerSelection === "paper")
         {

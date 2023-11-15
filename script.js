@@ -1,6 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection = "choice";
+let result = "<br>";
 
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
@@ -27,39 +28,29 @@ function game()
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
 
-    if (playerScore > computerScore)
-    {
-        console.log("Player Wins!");
-    }
-    else if (computerScore > playerScore)
-    {
-        console.log("Computer Wins!");
-    }
-    else
-        console.log("It's a tie :O");
-
-    console.log(`Player scored ${playerScore} out of 5`);
-    console.log(`Computer scored ${computerScore} out of 5`);
+    result += `Player scored ${playerScore} out of 5<br>`;
+    result += `Computer scored ${computerScore} out of 5<br>`;
 
 
     if (playerScore === 5 || computerScore === 5)
     {
         if (playerScore > computerScore)
         {
-            console.log("Player Wins the Game with 5!");
+            result += "<br><strong>Player Wins the Game with 5!</strong>";
         }
         else if (computerScore > playerScore)
         {
-            console.log("Computer Wins the Game with 5!");
+            result += "<br><strong>Computer Wins the Game with 5!</strong>";
         }
         else
-            console.log("The Game is a tie with 5 points each!");
+            result += "<br><strong>The Game is a tie with 5 points each!</strong>";
 
         playerScore = 0;
         computerScore = 0;
 
     }
 
+    document.getElementById('result').innerHTML = result;
 }
 
 function getComputerChoice()
@@ -78,32 +69,31 @@ function getComputerChoice()
             return "scissors";
             break;
         default:
-            return console.log("uh oh, something's gone wrong");
+            return alert("uh oh, something's gone wrong");
     }
 
 }
 
 function playRound(playerSelection, computerSelection)
 {
-    console.log(`You selected ${playerSelection}`);
-    console.log(`Computer selected ${computerSelection}`);
-    let result = "let's play";
+    result = `<br>You selected ${playerSelection}<br>`;
+    result += `Computer selected ${computerSelection}<br>`;
 
     if (playerSelection === "rock")
     {
         if (computerSelection === "paper")
         {
-            result = "You lose! Paper beats Rock";
+            result += "You lose! Paper beats Rock<br>";
             computerScore++;
         } else
             if (computerSelection === "scissors")
             {
-                result = "You win! Rock beats Scissors";
+                result += "You win! Rock beats Scissors<br>";
                 playerScore++;
             }
         if (computerSelection === "rock")
         {
-            result = "It's a tie!";
+            result += "It's a tie!<br>";
         }
     }
 
@@ -111,17 +101,17 @@ function playRound(playerSelection, computerSelection)
     {
         if (computerSelection === "scissors")
         {
-            result = "You lose! Scissors beats Paper";
+            result += "You lose! Scissors beats Paper<br>";
             computerScore++;
         } else
             if (computerSelection === "rock")
             {
-                result = "You win! Paper beats Rock";
+                result += "You win! Paper beats Rock<br>";
                 playerScore++;
             } else
                 if (computerSelection === "paper")
                 {
-                    result = "It's a tie!";
+                    result += "It's a tie!<br>";
                 }
     }
 
@@ -129,17 +119,17 @@ function playRound(playerSelection, computerSelection)
     {
         if (computerSelection === "rock")
         {
-            result = "You lose! Rock beats Scissors";
+            result += "You lose! Rock beats Scissors<br>";
             computerScore++;
         } else
             if (computerSelection === "paper")
             {
-                result = "You win! Scissors beats Paper";
+                result += "You win! Scissors beats Paper<br>";
                 playerScore++;
             } else
                 if (computerSelection === "scissors")
                 {
-                    result = "It's a tie!";
+                    result += "It's a tie!<br>";
                 }
     }
     return result;
